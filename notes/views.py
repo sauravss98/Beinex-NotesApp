@@ -8,7 +8,7 @@ def NoteAdd(request):
         form = NoteForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/noteshow")
+            return redirect("/")
     else:
         form = NoteForm()
     return render(request, "notes/noteadd.html", {"form": form})
@@ -29,11 +29,11 @@ def UpdateNote(request, id):
     form = NoteForm(request.POST, instance=note)
     if form.is_valid():
         form.save()
-        return redirect("/noteshow")
+        return redirect("/")
     return render(request, "notes/noteedit.html", {"note":note})
 
 
 def DestroyNote(request, id):
     note = Note.objects.get(id=id)
     note.delete()
-    return redirect("/noteshow")
+    return redirect("/")
