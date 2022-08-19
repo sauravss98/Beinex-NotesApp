@@ -16,7 +16,7 @@ def NoteAdd(request):
 
 def ViewNote(request):
     notes = Note.objects.all()
-    return render(request, "notes/noteshow.html", {"notes":notes})
+    return render(request, "notes/index.html", {"notes":notes})
 
 
 def EditNote(request, id):
